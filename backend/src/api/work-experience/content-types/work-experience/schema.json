@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_experiences",
+  "info": {
+    "singularName": "work-experience",
+    "pluralName": "work-experiences",
+    "displayName": "WorkExperience"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "WorkID": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
+    "DateRange": {
+      "type": "string",
+      "required": true
+    },
+    "JobTitle": {
+      "type": "string",
+      "required": true
+    },
+    "CompanyName": {
+      "type": "string",
+      "required": true
+    },
+    "ShortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "BulletPoints": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personal_projects",
+  "info": {
+    "singularName": "personal-project",
+    "pluralName": "personal-projects",
+    "displayName": "Personal-Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "tags": {
+      "type": "json",
+      "required": true
+    },
+    "projectImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "githubUrl": {
+      "type": "string",
+      "required": true
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "projectid": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    }
+  }
+}
