@@ -6,7 +6,7 @@ import {type Project,
 export const projectService = {
     async getPersonalProjects(): Promise<Project[]> {
         try{
-            const response = await api.get<ProjectResponseRaw>('/personal-projects?populate=projectImage');
+            const response = await api.get<ProjectResponseRaw>('/api/personal-projects?populate=projectImage');
             return response.data.data as Project[];
 
         }catch(error){
