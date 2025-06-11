@@ -49,7 +49,7 @@ const ProjectShowcase: React.FC = () => {
         setError('Failed to load personal projects. Please try again.');
         return;
       }
-      const baseURL = import.meta.env.VITE_IMAGE_URL;
+      const baseURL = import.meta.env.VITE_API_URL;
       const sortedByIdAsc = [...response].sort((a, b) => a.projectid - b.projectid);
 
       setBaseURL(baseURL);

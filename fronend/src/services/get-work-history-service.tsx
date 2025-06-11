@@ -7,7 +7,7 @@ import {
 export const workHistoryService = {
   async getExperiences(): Promise<WorkExperience[]> {
     try {
-      const response = await api.get<WorkExperiencResponseRaw>("/work-experiences");
+      const response = await api.get<WorkExperiencResponseRaw>("/api/work-experiences");
       return response.data.data as WorkExperience[];
     } catch (error) {
       console.error("Error fetching work experiences:", error);

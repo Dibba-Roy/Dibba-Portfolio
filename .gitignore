@@ -1,0 +1,60 @@
+# ====================
+# Dependencies
+# ====================
+# ignore node_modules everywhere
+**/node_modules/
+
+# ====================
+# Environment
+# ====================
+# ignore all .env files
+**/.env
+
+# ====================
+# Build outputs
+# ====================
+# Vite / React build
+/frontend/dist/
+/frontend/build/
+
+# Strapi build (if you ever build admin panel)
+/backend/build/
+
+# ====================
+# Tooling caches
+# ====================
+# Vite cache
+**/.vite/
+
+# Strapi temp & cache
+/backend/.tmp/
+/backend/.cache/
+
+# Optional Tailwind cache (if used)
+/frontend/.cache/
+
+# ====================
+# Uploaded assets
+# ====================
+# Strapi local uploads (we’re using Cloudinary instead)
+/backend/public/uploads/
+
+# ====================
+# Logs
+# ====================
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# ====================
+# OS & Editor
+# ====================
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# JetBrains IDEs
+.idea/

@@ -5,7 +5,7 @@ import type { RawImageFile } from '../models/fetchImageModel';
 export const imageService = {
   async getImageList(): Promise<RawImageFile[]> {
     try {
-      const response = await api.get('/upload/files');
+      const response = await api.get('/api/upload/files');
 
       const files = response.data as RawImageFile[];
       return files;
