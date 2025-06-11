@@ -8,7 +8,7 @@
 # Environment
 # ====================
 # ignore all .env files
-**/.env
+.env
 
 # ====================
 # Build outputs
