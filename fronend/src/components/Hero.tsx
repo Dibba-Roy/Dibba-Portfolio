@@ -212,8 +212,8 @@ const Hero: React.FC = () => {
         transition={{ delay: 1 }}
       >
         {[
-          { icon: Github, href: "https://github.com" },
-          { icon: Linkedin, href: "https://linkedin.com" },
+          { icon: Github, href: "https://https://github.com/dibba99.com" },
+          { icon: Linkedin, href: "https://www.linkedin.com/in/dibba-roy/" },
           { icon: Twitter, href: "https://twitter.com" }
         ].map((social, index) => (
           <motion.a
