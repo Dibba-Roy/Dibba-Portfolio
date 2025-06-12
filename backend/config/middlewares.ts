@@ -1,21 +1,24 @@
+// config/middlewares.ts
+
 export default [
   'strapi::errors',
-
+  {
+    name: 'strapi::security',
+    config: { contentSecurityPolicy: false },
+  },
   {
     name: 'strapi::cors',
     config: {
+      enabled: true,
       origin: [
-        'http://localhost:5173',            // local Vite dev
-        'https://dibba-portfolio.pages.dev',// your Pages URL
+        'http://localhost:4300',
+        'https://dibba-portfolio.pages.dev',
       ],
-      methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
-      // allow all headers (or remove this line to use Strapi's default)
-      headers: ['*'],
+      methods: ['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS'],
+      headers: '*',
       keepHeaderOnError: true,
     },
   },
-
-  'strapi::security',
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
