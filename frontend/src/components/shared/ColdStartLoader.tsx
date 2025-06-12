@@ -13,7 +13,7 @@ interface ColdStartLoaderProps {
 const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
   onComplete,
   coldStartPingService,
-  expectedResponseTime = 4000,
+  expectedResponseTime = 60000,
 }) => {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState('Initializing connection...');
