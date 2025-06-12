@@ -20,9 +20,10 @@ module.exports = ({ env }) => {
           },
           region:        env('CF_R2_REGION', 'auto'),
           endpoint:      env('CF_R2_ENDPOINT'),
+          baseUrl:         env('CF_R2_PUBLIC_URL'),
           params:        { Bucket: env('CF_R2_BUCKET') },
           signatureVersion: 'v4',
-          forcePathStyle:   true,
+          s3ForcePathStyle:   true,
         },
         actionOptions: {
           upload: {
