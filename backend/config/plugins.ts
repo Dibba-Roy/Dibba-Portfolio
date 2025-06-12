@@ -1,24 +1,37 @@
-export default ({ env }: { env: any }) => ({
-  upload: {
-    config: {
-      provider: 'aws-s3',
-      providerOptions: {
-        accessKeyId: env('CF_R2_ACCESS_KEY_ID'),
-        secretAccessKey: env('CF_R2_SECRET_ACCESS_KEY'),
-        region: env('CF_R2_REGION', 'auto'),
-        endpoint: env('CF_R2_ENDPOINT'),            // e.g. https://<ACCOUNT_ID>.r2.cloudflarestorage.com
-        signatureVersion: 'v4',
-        s3ForcePathStyle: true,                     // ← must be true for Cloudflare R2
-        params: {
-          Bucket: env('CF_R2_BUCKET'),
+module.exports = ({ env }) => {
+  // debug logging (you can remove this once it's working)
+  console.log('🔑 R2 creds',
+    'ACCESS_KEY_ID=', process.env.CF_R2_ACCESS_KEY_ID,
+    'SECRET=', !!process.env.CF_R2_SECRET_ACCESS_KEY,
+    'BUCKET=', process.env.CF_R2_BUCKET,
+    'ENDPOINT=', process.env.CF_R2_ENDPOINT,
+    'REGION=', process.env.CF_R2_REGION,
+  );
+
+  return {
+    upload: {
+      config: {
+        provider: 'aws-s3',
+        providerOptions: {
+          // Explicitly nest under "credentials"
+          credentials: {
+            accessKeyId:     env('CF_R2_ACCESS_KEY_ID'),
+            secretAccessKey: env('CF_R2_SECRET_ACCESS_KEY'),
+          },
+          region:        env('CF_R2_REGION', 'auto'),
+          endpoint:      env('CF_R2_ENDPOINT'),
+          params:        { Bucket: env('CF_R2_BUCKET') },
+          signatureVersion: 'v4',
+          forcePathStyle:   true,
         },
-      },
-      actionOptions: {
-        upload: {
-          ACL: 'public-read',                       // so the Admin UI can fetch the thumbnails
+        actionOptions: {
+          upload: {
+            // make objects publicly readable so the admin UI can fetch them
+            ACL: 'public-read',
+          },
+          delete: {},
         },
-        delete: {},
       },
     },
-  },
-});
+  };
+};
