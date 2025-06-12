@@ -60,9 +60,7 @@ const Hero: React.FC = () => {
         const firstFile = files[0];
         const relativeUrl = firstFile.formats.large.url;
 
-        const baseURL = import.meta.env.VITE_API_URL;
-        const fullUrl = `${baseURL}${relativeUrl}`;
-        setImgUrl(fullUrl);
+        setImgUrl(relativeUrl);
 
       } catch (e: any) {
         console.error(e);
