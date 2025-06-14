@@ -13,7 +13,6 @@ const ProjectShowcase: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [baseURL, setBaseURL] = useState<string>('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,10 +48,8 @@ const ProjectShowcase: React.FC = () => {
         setError('Failed to load personal projects. Please try again.');
         return;
       }
-      const baseURL = import.meta.env.VITE_API_URL;
       const sortedByIdAsc = [...response].sort((a, b) => a.projectid - b.projectid);
 
-      setBaseURL(baseURL);
       setProjects(sortedByIdAsc);
     } catch (error) {
       console.error(error);
@@ -233,7 +230,7 @@ const ProjectShowcase: React.FC = () => {
                     <div className="relative h-48 overflow-hidden">
                       {project.projectImage ? (
                         <img
-                          src={baseURL + project.projectImage.formats.thumbnail.url}
+                          src={project.projectImage.formats.thumbnail.url}
                           alt={project.title}
                           className="w-full h-full object-contain"
                         />
