@@ -294,8 +294,46 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10 pointer-events-auto md:pointer-events-none">
         <div className="grid md:grid-cols-2 gap-8 items-center pointer-events-auto md:pointer-events-none">
+          {/* Profile Image - Shows first on mobile, second on desktop */}
           <motion.div
-            className="flex flex-col text-left"
+            className="relative flex justify-center md:block order-1 md:order-2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {imgUrl ? (
+              <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] mx-auto">
+                <motion.div
+                  className="absolute inset-0 rounded-full overflow-hidden border-4 border-sky-500/30"
+                  animate={{
+                    boxShadow: [
+                      '0 0 20px rgba(14, 165, 233, 0.3)',
+                      '0 0 100px rgba(14, 165, 233, 0.3)',
+                      '0 0 20px rgba(14, 165, 233, 0.3)'
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut'
+                  }}
+                >
+                  <img
+                    src={imgUrl}
+                    alt="Professional portrait"
+                    className="w-full h-full object-cover object-[50%_0%]"
+                  />
+                </motion.div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/10 via-sky-500/10 to-blue-500/10 mix-blend-overlay" />
+              </div>
+            ) : (
+              <LoadingState />
+            )}
+          </motion.div>
+
+          {/* Text Content - Shows second on mobile, first on desktop */}
+          <motion.div
+            className="flex flex-col text-left order-2 md:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -354,48 +392,11 @@ const Hero: React.FC = () => {
               </motion.button>
             </motion.div>
           </motion.div>
-
-          {/* Profile Image - Now visible on mobile too */}
-          <motion.div
-            className="relative flex justify-center md:block"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {imgUrl ? (
-              <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] mx-auto">
-                <motion.div
-                  className="absolute inset-0 rounded-full overflow-hidden border-4 border-sky-500/30"
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(14, 165, 233, 0.3)',
-                      '0 0 100px rgba(14, 165, 233, 0.3)',
-                      '0 0 20px rgba(14, 165, 233, 0.3)'
-                    ]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut'
-                  }}
-                >
-                  <img
-                    src={imgUrl}
-                    alt="Professional portrait"
-                    className="w-full h-full object-cover object-[50%_0%]"
-                  />
-                </motion.div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/10 via-sky-500/10 to-blue-500/10 mix-blend-overlay" />
-              </div>
-            ) : (
-              <LoadingState />
-            )}
-          </motion.div>
         </div>
 
         {/* Mobile Social Links - Show below content on mobile */}
         <motion.div
-          className="flex md:hidden justify-center gap-4 mt-8 pointer-events-auto"
+          className="flex md:hidden justify-center gap-4 mt-8 mb-8 pointer-events-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}

@@ -106,45 +106,53 @@ const WorkHistory: React.FC = () => {
         </motion.h2>
 
         <div className="max-w-4xl mx-auto relative">
-          {/* Timeline line */}
+          {/* Timeline line - Left on mobile, center on desktop */}
           <motion.div
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="absolute left-1/2 top-0 w-px h-full bg-white/20"
+            className="absolute left-6 md:left-1/2 top-0 w-px h-full bg-white/20"
             style={{ transformOrigin: 'top' }}
           />
 
           <div className="space-y-24">
             {workHistory.map((exp, index) => (
               <div key={exp.id} className="relative animate-on-scroll">
-                {/* Date marker */}
+                {/* Date marker - Positioned relative to timeline */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute left-1/2 -translate-x-1/8 w-4 h-4 rounded-full bg-white"
+                  className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white"
                 />
 
-                {/* Date text */}
+                {/* Date text - Positioned differently for mobile vs desktop */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="absolute left-1/2 -translate-x-1/2 -top-8 text-white/60 text-sm whitespace-nowrap"
+                  className="absolute left-12 md:left-1/2 md:-translate-x-1/2 -top-8 text-white/60 text-sm whitespace-nowrap"
                 >
                   {exp.DateRange}
                 </motion.div>
 
-                {/* Content card */}
+                {/* Content card - All right-aligned on mobile, alternating on desktop */}
                 <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  initial={{ 
+                    opacity: 0, 
+                    x: window.innerWidth >= 768 ? (index % 2 === 0 ? -50 : 50) : 50 
+                  }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className={`w-[calc(50%-40px)] ${
-                    index % 2 === 0 ? 'mr-auto' : 'ml-[calc(50%+40px)]'
-                  }`}
+                  className={`
+                    ml-16 w-[calc(100%-5rem)]
+                    md:w-[calc(50%-40px)] md:ml-0
+                    ${index % 2 === 0 
+                      ? 'md:mr-auto' 
+                      : 'md:ml-[calc(50%+40px)]'
+                    }
+                  `}
                   onClick={() => handleCardClick(exp)}
                 >
                   <motion.div
