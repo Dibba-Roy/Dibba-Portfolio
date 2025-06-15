@@ -13,7 +13,7 @@ export default [
       origin: [
         'http://localhost:4300',
         'https://dibba-portfolio.pages.dev',
-        'https://dibba.org/'
+        'https://dibba.org'
       ],
       methods: ['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS'],
       headers: '*',
