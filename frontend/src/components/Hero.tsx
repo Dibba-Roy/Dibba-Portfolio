@@ -351,17 +351,17 @@ const Hero: React.FC = () => {
 
             <div className="h-8 md:h-10 mb-6">
               <motion.h2
-                className="text-xl md:text-3xl font-medium text-slate-300 md:text-slate-600 md:dark:text-slate-400"
+                className="text-xl md:text-3xl font-medium text-slate-400"
                 initial="initial"
                 animate="animate"
               >
-                I'm a <span className="text-sky-400 md:text-sky-500 md:dark:text-sky-400">{typed}</span>
+                I'm a <span className="text-sky-400">{typed}</span>
                 <span className="animate-blink">|</span>
               </motion.h2>
             </div>
 
             <motion.p
-              className="max-w-xl text-slate-300 md:text-slate-600 md:dark:text-slate-400 mb-8 text-lg leading-relaxed"
+              className="max-w-xl text-slate-400 mb-8 text-lg leading-relaxed"
               initial="initial"
               animate="animate"
             >
@@ -384,7 +384,7 @@ const Hero: React.FC = () => {
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 bg-transparent border-2 border-slate-300 md:border-slate-300 md:dark:border-slate-700 hover:border-sky-500 md:dark:hover:border-sky-500 text-slate-200 md:text-slate-700 md:dark:text-slate-300 hover:text-sky-400 md:hover:text-sky-500 md:dark:hover:text-sky-400 rounded-full font-medium transition-all pointer-events-auto"
+                className="px-8 py-3 bg-transparent border-2 border-slate-700 hover:border-sky-500 text-slate-300 hover:text-sky-400 rounded-full font-medium transition-all pointer-events-auto"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -441,7 +441,7 @@ const Hero: React.FC = () => {
             href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 bg-white/10 dark:bg-black/40 backdrop-blur-md rounded-full border border-white/20 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-white/20 dark:hover:bg-black/60 transition-all pointer-events-auto"
+            className="p-3 bg-black/40 backdrop-blur-md rounded-full border border-white/10 text-slate-400 hover:text-sky-400 hover:bg-black/60 transition-all pointer-events-auto"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, scale: 0 }}
@@ -455,7 +455,7 @@ const Hero: React.FC = () => {
 
       <motion.button
         onClick={() => scrollToSection('workExperience')}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 transition-colors hidden md:block pointer-events-auto"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow text-slate-400 hover:text-sky-400 transition-colors hidden md:block pointer-events-auto"
         aria-label="Scroll to Work Experience section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -33,7 +33,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
     const requestStartTime = Date.now();
     setStartTime(requestStartTime);
 
-    // Immediately show “Waking up server…” (for the first second)
+    // Immediately show "Waking up server…" (for the first second)
     setStatus('Waking up server...');
 
     // Start an interval to update progress up to 95% over expectedResponseTime
@@ -72,7 +72,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
       setStatus('Ready!');
       setIsComplete(true);
 
-      // Wait a moment so the user sees 100% + “Ready!” before continuing
+      // Wait a moment so the user sees 100% + "Ready!" before continuing
       setTimeout(() => {
         onComplete();
       }, 800);
@@ -82,7 +82,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
       // Clear the progress-tracking interval
       clearInterval(progressTracker);
 
-      // Enter error state: show “Connection failed” + Retry button
+      // Enter error state: show "Connection failed" + Retry button
       setHasError(true);
       setStatus('Whoops! Looks like the server took too long to respond. Please try again.');
       setProgress(0);
@@ -96,7 +96,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
   }, [startColdStart]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -108,10 +108,10 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
           animate={{ scale: 1 }}
           transition={{ duration: 0.8, type: 'spring' }}
         >
-          <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-2">
+          <h1 className="text-4xl font-bold text-slate-100 mb-2">
             Loading
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-slate-400">
             Preparing your experience
           </p>
         </motion.div>
@@ -120,7 +120,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
         <div className="w-80 mx-auto">
           <div className="relative">
             {/* Background Bar */}
-            <div className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
               {/* Foreground Bar (animated width) */}
               <motion.div
                 className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
@@ -133,7 +133,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
             {/* Progress Percent (hidden if error) */}
             {!hasError && (
               <motion.div
-                className="mt-3 text-sm font-medium text-slate-600 dark:text-slate-400"
+                className="mt-3 text-sm font-medium text-slate-400"
                 animate={{ opacity: isComplete ? 0 : 1 }}
               >
                 {Math.round(progress)}%
@@ -148,7 +148,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className={`text-slate-600 dark:text-slate-400 ${
+          className={`text-slate-400 ${
             hasError ? 'text-red-500' : ''
           }`}
         >
@@ -222,7 +222,7 @@ const ColdStartLoader: React.FC<ColdStartLoaderProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-xs text-slate-500 dark:text-slate-500"
+            className="text-xs text-slate-500"
           >
             Response time: {Date.now() - startTime}ms
           </motion.div>

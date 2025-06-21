@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
           transform transition-transform duration-300
           ${visible ? 'translate-y-0' : '-translate-y-full'}
           ${scrolled
-            ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm shadow-sm'
+            ? 'bg-slate-900/90 backdrop-blur-sm shadow-sm'
             : ''
           }
         `}
@@ -62,7 +62,7 @@ const NavBar: React.FC = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="text-slate-700 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors"
+                className="text-slate-300 hover:text-teal-400 transition-colors"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
@@ -73,7 +73,7 @@ const NavBar: React.FC = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsMenuOpen(open => !open)}
-              className="p-2 rounded-full bg-slate-200 dark:bg-slate-800"
+              className="p-2 rounded-full bg-slate-800"
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -85,7 +85,7 @@ const NavBar: React.FC = () => {
         <div
           className={`
             md:hidden fixed inset-0 top-[72px]
-            bg-white dark:bg-slate-900 z-40
+            bg-slate-900 z-40
             transition-transform duration-300 transform
             ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
           `}
@@ -95,7 +95,7 @@ const NavBar: React.FC = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="text-slate-700 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors"
+                className="text-slate-300 hover:text-teal-400 transition-colors"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </button>
