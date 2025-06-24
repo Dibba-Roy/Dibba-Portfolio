@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Twitter } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
-import { imageService } from '../services/get-image-service';
-import type { RawImageFile } from '../models/fetchImageModel';
+import { useImage } from '../contexts/ImageContext';
 import LoadingState from './shared/LoadingState';
 
 const phrases = [
@@ -18,7 +17,7 @@ const Hero: React.FC = () => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
-  const [imgUrl, setImgUrl] = useState<string | null>(null);
+  const { imgUrl, isImageLoading } = useImage();
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
@@ -47,27 +46,6 @@ const Hero: React.FC = () => {
     const timer = setTimeout(typeText, typingSpeed);
     return () => clearTimeout(timer);
   }, [typed, currentPhraseIndex, isDeleting, typingSpeed]);
-
-  useEffect(() => {
-    async function fetchFirstImage() {
-      try {
-        const files: RawImageFile[] = await imageService.getImageList();
-
-        if (files.length === 0) {
-          return;
-        }
-
-        const firstFile = files[0];
-        const relativeUrl = firstFile.formats.large.url;
-
-        setImgUrl(relativeUrl);
-
-      } catch (e: any) {
-        console.error(e);
-      }
-    }
-    fetchFirstImage();
-  }, []);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -301,7 +279,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {imgUrl ? (
+            {imgUrl && !isImageLoading ? (
               <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] mx-auto">
                 <motion.div
                   className="absolute inset-0 rounded-full overflow-hidden border-4 border-sky-500/30"
