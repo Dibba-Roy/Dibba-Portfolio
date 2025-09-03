@@ -343,8 +343,7 @@ const Hero: React.FC = () => {
               initial="initial"
               animate="animate"
             >
-              Building beautiful, intuitive applications with a focus on performance and user experience.
-              With 4 years of experience crafting solutions for web and mobile platforms.
+              Building beautiful, intuitive applications with a focus on performance and user experience for both web and mobile platforms.
             </motion.p>
 
             <motion.div
@@ -381,7 +380,7 @@ const Hero: React.FC = () => {
         >
           {[
             { icon: Github, href: "https://https://github.com/dibba99.com" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/dibba-roy/" },
+            { icon: Linkedin, href: "" },
             { icon: Twitter, href: "https://twitter.com" }
           ].map((social, index) => (
             <motion.a
