@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import NavBar from './components/NavBar';
 import WorkHistory from './components/WorkHistory';
 import Projects from './components/Projects';
+import Contact from './components/Contact';
 import { AnimatePresence, motion } from 'motion/react';
 import ColdStartLoader from './components/shared/ColdStartLoader';
 import AppLoadingAnimation from './components/AppLoadingAnimation';
@@ -47,6 +48,7 @@ function App() {
               <Hero />
               <WorkHistory />
               <Projects />
+              <Contact />
             </motion.main>
           </AnimatePresence>
         )}
